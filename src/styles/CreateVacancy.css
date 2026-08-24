@@ -1,0 +1,34 @@
+.vacancy-page { flex:none; width:calc(100% - 298px); margin-left:298px; min-height:calc(100vh - 72px); overflow:visible; padding-top:14px; font-family:'Open Sans',Arial,sans-serif; }
+.vacancy-back button { display:flex; align-items:center; gap:5px; min-width:0; min-height:0; padding:5px 0; border:0; background:transparent; color:#111827; font-size:13px; cursor:pointer; }
+.vacancy-back svg { width:10px; }
+.vacancy-container { margin:0; background:#fff; border-radius:8px; padding:14px 16px; box-shadow:0 1px 3px rgba(0,0,0,.05); }
+.vacancy-header { display:flex; justify-content:space-between; align-items:flex-start; border-bottom:1px solid #edf0f4; padding-bottom:10px; }
+.vacancy-header h1 { margin:0; color:#111827; font-size:20px; }
+.vacancy-header p { margin:3px 0 6px; color:#9ca3af; font-size:11px; }
+.vacancy-meta { display:flex; align-items:center; gap:5px; color:#07519b; font-size:12px; }
+.vacancy-meta b { padding:1px 3px; border:1px solid #d1d5db; border-radius:2px; color:#6b7280; font-weight:500; }
+.post-job-button { min-width:0; min-height:0; padding:9px 14px; border:0; border-radius:3px; background:#07519b; color:#fff; font-size:13px; cursor:pointer; }
+.vacancy-layout { display:grid !important; grid-template-columns:minmax(190px, 0.42fr) minmax(0, 1fr) !important; align-items:start; gap:24px; padding-top:12px; }
+.vacancy-fields { display:grid; gap:7px; }
+.vacancy-field, .description-field { display:block; border:1px solid #e7ebf0; border-radius:3px; overflow:hidden; }
+.vacancy-field:has(.date-picker-wrapper) { overflow:visible; }
+.vacancy-field>span, .description-field>span { display:block; padding:8px 10px; border-bottom:1px solid #edf0f4; color:#111827; font-size:14px; font-weight:600; }
+.vacancy-field>input { width:100%; border:0; outline:0; padding:9px 10px; color:#6b7280; font-size:13px; }
+.input-with-icon { display:flex; align-items:center; justify-content:space-between; width:100%; border:0; background:#fff; padding:9px 10px; color:#6b7280; font-size:13px; text-align:left; cursor:pointer; }
+.input-with-icon svg { width:10px; color:#07519b; }
+.date-picker-wrapper { position:relative; }
+.vacancy-calendar { position:absolute; top:calc(100% + 4px); right:0; z-index:20; width:145px; padding:8px; background:#fff; border:1px solid #e5e7eb; border-radius:4px; box-shadow:0 5px 15px rgba(0,0,0,.16); }
+.vacancy-calendar header { display:flex; justify-content:space-between; align-items:center; margin-bottom:7px; color:#111827; font-size:11px; }
+.vacancy-calendar header span { color:#9ca3af; font-size:11px; }
+.calendar-weekdays, .calendar-days { display:grid; grid-template-columns:repeat(7,1fr); text-align:center; }
+.calendar-weekdays { margin-bottom:4px; color:#9ca3af; font-size:9px; }
+.calendar-days { gap:2px; }
+.calendar-days button, .calendar-days span { display:flex; align-items:center; justify-content:center; width:15px; height:15px; min-width:15px; min-height:15px; padding:0; border:0; background:#fff; color:#6b7280; font-size:9px; cursor:pointer; }
+.calendar-days button:hover, .calendar-days button.selected { background:#07519b; color:#fff; border-radius:2px; }
+.description-field textarea { display:block; width:100%; min-height:320px; padding:10px; border:0; resize:vertical; outline:0; color:#6b7280; font:13px/1.45 'Open Sans',Arial,sans-serif; }
+.choice-row { display:flex; flex-wrap:wrap; gap:8px; padding:9px 10px; color:#6b7280; font-size:12px; }
+.choice-row label { display:flex; align-items:center; gap:3px; white-space:nowrap; }
+.choice-row input { width:9px; height:9px; accent-color:#07519b; }
+.vacancy-field:has(.choice-row)>span { padding-bottom:5px; }
+@media (max-width:700px) { .vacancy-page { width:calc(100% - 70px); margin-left:70px; min-height:calc(100vh - 60px); padding:12px; } .vacancy-header { gap:10px; } .vacancy-layout { grid-template-columns:1fr; gap:10px; } .description-field textarea { min-height:220px; } .vacancy-fields { grid-template-columns:1fr 1fr; } }
+@media (max-width:480px) { .vacancy-fields { grid-template-columns:1fr; } .vacancy-header { flex-direction:column; } .jobs-actions { flex-wrap:wrap; } }
