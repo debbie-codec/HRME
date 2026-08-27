@@ -4,7 +4,7 @@ import TopBar from "../Components/adminConponents/Topbar";
 import StatsCards from"../Components/adminConponents/StatsCards"; 
 import DashboardMetrics from"../Components/adminConponents/DashboardMetrics"; 
 import CandidatesTable from"../Components/adminConponents/CandidatesTable"; 
-import "../Styles/dashboard.css";
+import "../styles/dashboard.css";
 
 const DashboardPage = () => {
   return (

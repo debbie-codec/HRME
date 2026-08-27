@@ -135,7 +135,7 @@ nav .btn .apply:hover{
 .hero-text {
   flex: 1;
   padding: 80px 60px;
-  background-image: url("images/Frame\ 427319842.png");
+  background-image: url("/images/Frame%20427319842.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -456,7 +456,7 @@ nav .btn .apply:hover{
 
 .feature-card.featured {
   background-color: #023E87;
-  background-image: url(images/Frame\ 427319927.png);
+  background-image: url("/images/Frame%20427319927.png");
   background-repeat: no-repeat;
   background-position: top right;
   background-size: 220px;
@@ -817,7 +817,7 @@ nav .btn .apply:hover{
   height: 438px;
   border-radius: 20px;
   background-color: #023E87;
-  background-image: url(images/traks_bg_hero_updated.svg.png);
+  background-image: url("/images/traks_bg_hero_updated.svg.png");
   background-repeat: no-repeat;
   background-position: right center;
   background-size: auto 100%;
