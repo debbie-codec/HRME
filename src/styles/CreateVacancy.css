@@ -1,4 +1,4 @@
-.vacancy-page { flex:none; width:calc(100% - 298px); margin-left:298px; min-height:calc(100vh - 72px); overflow:visible; padding-top:14px; font-family:'Open Sans',Arial,sans-serif; }
+.vacancy-page { flex:none; width:100%; margin-left:0; min-height:calc(100vh - 72px); overflow:visible; padding-top:14px; font-family:'Open Sans',Arial,sans-serif; }
 .vacancy-back button { display:flex; align-items:center; gap:5px; min-width:0; min-height:0; padding:5px 0; border:0; background:transparent; color:#111827; font-size:13px; cursor:pointer; }
 .vacancy-back svg { width:10px; }
 .vacancy-container { margin:0; background:#fff; border-radius:8px; padding:14px 16px; box-shadow:0 1px 3px rgba(0,0,0,.05); }
@@ -30,5 +30,5 @@
 .choice-row label { display:flex; align-items:center; gap:3px; white-space:nowrap; }
 .choice-row input { width:9px; height:9px; accent-color:#07519b; }
 .vacancy-field:has(.choice-row)>span { padding-bottom:5px; }
-@media (max-width:700px) { .vacancy-page { width:calc(100% - 70px); margin-left:70px; min-height:calc(100vh - 60px); padding:12px; } .vacancy-header { gap:10px; } .vacancy-layout { grid-template-columns:1fr; gap:10px; } .description-field textarea { min-height:220px; } .vacancy-fields { grid-template-columns:1fr 1fr; } }
+@media (max-width:700px) { .vacancy-page { width:100%; margin-left:0; min-height:calc(100vh - 60px); padding:12px; } .vacancy-header { gap:10px; } .vacancy-layout { grid-template-columns:1fr; gap:10px; } .description-field textarea { min-height:220px; } .vacancy-fields { grid-template-columns:1fr 1fr; } }
 @media (max-width:480px) { .vacancy-fields { grid-template-columns:1fr; } .vacancy-header { flex-direction:column; } .jobs-actions { flex-wrap:wrap; } }

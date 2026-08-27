@@ -31,8 +31,8 @@
    CANDIDATES CONTAINER
    ===================================================== */
 .candidates-container {
-  margin-left: 298px;
-  width: calc(100% - 298px - 64px);
+  margin: 0 var(--dashboard-gutter);
+  width: auto;
   background-color: #ffffff;
   border-radius: 12px;
   padding: 20px;
@@ -139,21 +139,6 @@
   color: #1e40af;
 }
 
-.action-btn-outline:hover {
-  background-color: #eff6ff;
-  border-color: #1d4ed8;
-}
-
-.view-more-btn:hover {
-  background-color: #eff6ff;
-  border-color: #1d4ed8;
-}
-
-.view-more-btn:hover {
-  background-color: #f9fafb;
-  border-color: #9ca3af;
-}
-
 /* CATEGORY FILTER TABS */
 .candidates-tabs {
   display: flex;
@@ -195,23 +180,26 @@
   right: 0;
   height: 2px;
   background-color: #1e40af;
-  border-radius: 2px 2px 0 0;
+  border-radius: 0;
 }
 
 .tab-count {
   background-color: transparent;
   color: #111827;
-  font-size: 13px;
+  font-size: 9px;
   font-weight: 700;
-  padding: 0;
+  padding: 1px 3px;
+  border: 1px solid #d1d5db;
+  border-radius: 2px;
 }
 
 .tab-count.active-count {
   background-color: #1e40af;
   color: #ffffff;
-  padding: 2px 8px;
-  border-radius: 12px;
-  font-size: 12px;
+  padding: 1px 3px;
+  border: 1px solid #1e40af;
+  border-radius: 0;
+  font-size: 9px;
 }
 
 /* =====================================================
@@ -273,7 +261,18 @@
 }
 
 .candidates-table tbody tr.selected-row {
-  background-color: #f0f7ff;
+  background-color: #EBEFFA80;
+  color: rgb(139, 136, 136);
+}
+
+.candidates-table tbody tr.selected-row > td {
+  background-color: #EBEFFA80;
+}
+
+.candidates-table tbody tr.selected-row td,
+.candidates-table tbody tr.selected-row td span,
+.candidates-table tbody tr.selected-row td img {
+  opacity: 1;
 }
 
 .action-btn {
@@ -300,11 +299,26 @@
 
 /* CHECKBOX */
 .candidates-table input[type='checkbox'] {
-  width: 14px;
-  height: 14px;
-  accent-color: #1e40af;
+  width: 16px;
+  height: 16px;
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-grid;
+  place-content: center;
+  margin: 0;
+  border: 1px solid #9ca3af;
+  border-radius: 2px;
+  background: #ffffff;
   cursor: pointer;
-  border-radius: 4px;
+}
+
+.candidates-table input[type='checkbox']:checked {
+  border-color: #1e40af;
+  background-color: #1e40af;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6l2.5 2.5L10 3' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 11px 11px;
 }
 
 /* CANDIDATE CELL */
@@ -785,8 +799,8 @@
    ===================================================== */
 @media (max-width: 900px) {
   .candidates-container {
-    margin-left: 220px;
-    width: calc(100% - 220px - 32px);
+    margin-left: var(--dashboard-gutter);
+    width: auto;
   }
 }
 
@@ -797,8 +811,9 @@
   }
 
   .candidates-container {
-    margin-left: 70px;
-    width: calc(100% - 70px - 32px);
+    margin-left: var(--dashboard-gutter);
+    margin-right: var(--dashboard-gutter);
+    width: auto;
   }
 
   .candidates-header {
@@ -825,8 +840,9 @@
   }
 
   .candidates-container {
-    margin-left: 70px;
-    width: calc(100% - 70px - 24px);
+    margin-left: var(--dashboard-gutter);
+    margin-right: var(--dashboard-gutter);
+    width: auto;
     padding: 16px;
     border-radius: 8px;
   }
@@ -855,8 +871,9 @@
 
 @media (max-width: 480px) {
   .candidates-container {
-    margin-left: 60px;
-    width: calc(100% - 60px - 20px);
+    margin-left: var(--dashboard-gutter);
+    margin-right: var(--dashboard-gutter);
+    width: auto;
   }
 }
 

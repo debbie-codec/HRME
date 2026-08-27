@@ -7,10 +7,11 @@ import { createPortal } from 'react-dom';
 import Sidebar from "../Components/adminConponents/Sidebar";
 import TopBar from "../Components/adminConponents/Topbar";
 import FilterModal from "../Components/adminConponents/FilterModal";
+import SHARED_CANDIDATES from '../data/candidates';
 // STYLES
 import "../Styles/CandidatesTable.css";
 
-const INITIAL_CANDIDATES = [
+const LEGACY_INITIAL_CANDIDATES = [
   {
     id: 1,
     name: 'Albert Flores',
@@ -168,6 +169,8 @@ const INITIAL_CANDIDATES = [
     type: 'Hybrid',
   },
 ];
+
+const INITIAL_CANDIDATES = SHARED_CANDIDATES;
 
 export default function CandidatesPage() {
   const [activeTab, setActiveTab] = useState('all');
@@ -332,7 +335,7 @@ export default function CandidatesPage() {
                 </div>
                 <button 
   type="button" 
-  className="view-more-btn"
+  className="action-btn-outline"
   onClick={() => setIsFilterOpen(true)} 
 >
   <FiFilter /> Filters

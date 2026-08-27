@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiSearch, FiBell, FiChevronDown, FiArrowRight } from "react-icons/fi";
 
-export default function Topbar({ onSearch }) {
+export default function Topbar({ onSearch, showWelcome = false }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
@@ -68,7 +68,7 @@ export default function Topbar({ onSearch }) {
   return (
     <header className="topbar">
       {/* WELCOME MESSAGE */}
-      <h1 className="welcome-text">Welcome {userName}</h1>
+      {showWelcome && <h1 className="welcome-text">Welcome {userName}</h1>}
 
       {/* DYNAMIC SEARCH BAR */}
       <div className="topbar-search-wrapper" ref={searchRef}>

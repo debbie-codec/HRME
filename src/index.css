@@ -5,9 +5,29 @@
 /* Set viewport for mobile-first responsive design */
 html {
   font-size: 16px;
+  margin: 0;
+  padding: 0;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  --sidebar-width: 250px;
+  --dashboard-gutter: 32px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --sidebar-width: 70px;
+    --dashboard-gutter: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --dashboard-gutter: 12px;
+  }
 }
 
 /* Ensure all elements are responsive by default */
@@ -27,6 +47,29 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #f8fafc;
   color: #111827;
+}
+
+.app-layout,
+.dash {
+  margin: 0;
+  padding: 0;
+}
+
+.app-layout .main-wrapper {
+  width: calc(100% - var(--sidebar-width));
+  margin-left: var(--sidebar-width);
+  min-width: 0;
+}
+
+.app-layout .main-wrapper > .page-content {
+  padding-top: 88px;
+}
+
+@media (max-width: 768px) {
+  .app-layout .main-wrapper > .page-content {
+    padding-top: 72px;
+    margin-top: 0;
+  }
 }
 
 /* Make images responsive */

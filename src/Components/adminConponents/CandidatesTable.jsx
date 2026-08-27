@@ -3,6 +3,7 @@ import { FiMoreVertical, FiEdit2, FiTrash2 } from 'react-icons/fi';
 import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
 import FilterModal from './FilterModal';
+import SHARED_CANDIDATES from '../../data/candidates';
 
 const TABS = [
   { id: 'all', label: 'All Candidates', count: 10 },
@@ -10,7 +11,7 @@ const TABS = [
   { id: 'inactive', label: 'Inactive Candidates', count: 3 },
 ];
 
-const CANDIDATES_DATA = [
+const LEGACY_CANDIDATES_DATA = [
   {
     id: 1,
     name: 'Albert Flores',
@@ -52,7 +53,9 @@ const CANDIDATES_DATA = [
   },
 ];
 
-export default function CandidatesTable() {
+const CANDIDATES_DATA = SHARED_CANDIDATES;
+
+export default function CandidatesTable({ maxRows }) {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('all');
   const [selectedIds, setSelectedIds] = useState([]);
@@ -105,7 +108,7 @@ export default function CandidatesTable() {
   }, [menuOpen]);
 
   const filteredCandidates = CANDIDATES_DATA.filter((candidate) => {
-    if (activeTab !== 'all' && candidate.status?.toLowerCase() !== activeTab) return false;
+    if (activeTab !== 'all' && candidate.category !== activeTab) return false;
     if (selectedStatuses.length > 0 && !selectedStatuses.includes(candidate.status)) return false;
     if (selectedJob !== '' && candidate.jobApplied !== selectedJob) return false;
     if (selectedStage !== '' && candidate.stage !== selectedStage) return false;
@@ -177,7 +180,7 @@ export default function CandidatesTable() {
             </tr>
           </thead>
           <tbody>
-            {filteredCandidates.map((row) => {
+            {filteredCandidates.slice(0, maxRows || filteredCandidates.length).map((row) => {
               const isSelected = selectedIds.includes(row.id);
               return (
                 <tr

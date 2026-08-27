@@ -15,11 +15,11 @@ const DashboardPage = () => {
       {/* Main dashboard content area */}
       <main className="main">
         {/* Top Header */}
-        <TopBar username="Joy" />
+        <TopBar username="Joy" showWelcome />
        
        <StatsCards/>
        <DashboardMetrics/>
-       <CandidatesTable/>
+      <CandidatesTable maxRows={4} />
 
       </main>
     </div>

@@ -12,6 +12,7 @@ import {
   FiX,
 } from 'react-icons/fi';
 
+
 export default function Sidebar() {
   const navigate = useNavigate();
   const location = useLocation(); // Tracks current URL path
@@ -36,8 +37,12 @@ export default function Sidebar() {
   return (
     <>
       {/* Mobile Top Navigation Bar */}
-      <nav className="mobile-nav-bar">
-        <button className="sidebar-toggle-btn" onClick={() => setIsExpanded(!isExpanded)}>
+      <nav className={`mobile-nav-bar ${isExpanded ? 'sidebar-open' : ''}`}>
+        <button 
+          className="sidebar-toggle-btn" 
+          onClick={() => setIsExpanded(!isExpanded)}
+          aria-label="Toggle Navigation Menu"
+        >
           {isExpanded ? <FiX size={24} /> : <FiMenu size={24} />}
         </button>
 
@@ -62,6 +67,7 @@ export default function Sidebar() {
         </div>
       </nav>
 
+      {/* Main Sidebar */}
       <aside className={`sidebar ${isExpanded ? 'expanded' : ''}`}>
         {/* LOGO */}
         <div className="sidebar-logo">
@@ -73,7 +79,6 @@ export default function Sidebar() {
         {/* NAVIGATION */}
         <nav className="sidebar-nav">
           {menuItems.map((item) => {
-            // Checks if current URL starts with item path (e.g., /candidates/qualified matches /candidates)
             const isActive = location.pathname.startsWith(item.path);
 
             return (
@@ -95,7 +100,9 @@ export default function Sidebar() {
         {/* BOTTOM SECTION */}
         <div className="sidebar-bottom">
           <div className="upgrade-card">
-            <div className="upgrade-icon">🚀</div>
+            <div className="upgrade-icon">
+              <img src="/images/pro.png" alt="PRO" />
+            </div>
             <p>
               Upgrade to <strong>PRO</strong>
               <br />
@@ -114,7 +121,10 @@ export default function Sidebar() {
       </aside>
 
       {/* Mobile Overlay */}
-      {isExpanded && <div className="sidebar-overlay" onClick={() => setIsExpanded(false)} />}
+      <div 
+        className={`sidebar-overlay ${!isExpanded ? 'hidden' : ''}`} 
+        onClick={() => setIsExpanded(false)} 
+      />
     </>
   );
 }
