@@ -1,14 +1,14 @@
 import '../styles/landing.css';
-import Navbar from '../components/Navbar';
-import Hero from '../components/Hero';
-import Trusted from '../components/Trusted-Enhanced';
-import Features from '../components/Features-Enhanced';
-import Empower from '../components/Empower';
-import Testimonials from '../components/Testimonials';
-import CTA from '../components/CTA';
-import Recognition from '../components/Recognition-Enhanced';
-import ContactBar from '../components/ContactBar';
-import Footer from '../components/Footer';
+import Navbar from '../Components/Navbar';
+import Hero from '../Components/Hero';
+import Trusted from '../Components/Trusted-Enhanced';
+import Features from '../Components/Features-Enhanced';
+import Empower from '../Components/Empower';
+import Testimonials from '../Components/Testimonials';
+import CTA from '../Components/CTA';
+import Recognition from '../Components/Recognition-Enhanced';
+import ContactBar from '../Components/ContactBar';
+import Footer from '../Components/Footer';
 
 export default function LandingPage() {
   return (
