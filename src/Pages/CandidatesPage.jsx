@@ -9,7 +9,7 @@ import TopBar from "../Components/adminConponents/Topbar";
 import FilterModal from "../Components/adminConponents/FilterModal";
 import SHARED_CANDIDATES from '../data/candidates';
 // STYLES
-import "../Styles/CandidatesTable.css";
+import "../styles/CandidatesTable.css";
 
 const LEGACY_INITIAL_CANDIDATES = [
   {
