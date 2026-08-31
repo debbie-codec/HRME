@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { FiCamera } from 'react-icons/fi';
+import { FiCamera, FiAlertCircle } from 'react-icons/fi';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Sidebar from "../Components/adminConponents/Sidebar";
 import TopBar from "../Components/adminConponents/Topbar";
 import "../styles/settings.css";
@@ -50,6 +52,12 @@ export default function SettingsPage() {
     confirmPassword: '',
   });
 
+  const [passwordErrors, setPasswordErrors] = useState({
+    currentPassword: '',
+    newPassword: '',
+    confirmPassword: '',
+  });
+
   // Handle Account Form Changes
   const handleAccountChange = (field, value) => {
     setAccountForm(prev => ({
@@ -63,6 +71,11 @@ export default function SettingsPage() {
     setPasswordForm(prev => ({
       ...prev,
       [field]: value
+    }));
+
+    setPasswordErrors(prev => ({
+      ...prev,
+      [field]: ''
     }));
   };
 
@@ -95,11 +108,39 @@ export default function SettingsPage() {
 
   // Handle Update Password
   const handleUpdatePassword = () => {
-    if (passwordForm.newPassword !== passwordForm.confirmPassword) {
-      alert('New password and confirm password do not match!');
+    const nextErrors = {
+      currentPassword: '',
+      newPassword: '',
+      confirmPassword: '',
+    };
+
+    if (!passwordForm.currentPassword.trim()) {
+      nextErrors.currentPassword = 'This is a required field';
+    }
+
+    if (!passwordForm.newPassword.trim()) {
+      nextErrors.newPassword = 'This is a required field';
+    } else if (passwordForm.newPassword.length < 8) {
+      nextErrors.newPassword = 'Password must be at least 8 characters';
+    }
+
+    if (!passwordForm.confirmPassword.trim()) {
+      nextErrors.confirmPassword = 'This is a required field';
+    } else if (passwordForm.newPassword !== passwordForm.confirmPassword) {
+      nextErrors.confirmPassword = 'Passwords do not match';
+    }
+
+    if (passwordForm.currentPassword && passwordForm.newPassword && passwordForm.currentPassword === passwordForm.newPassword) {
+      nextErrors.newPassword = 'New password must be different from current password';
+    }
+
+    setPasswordErrors(nextErrors);
+
+    if (Object.values(nextErrors).some(Boolean)) {
       return;
     }
-    alert('Password updated successfully!');
+
+    toast.success('Password updated successfully');
     setPasswordForm({
       currentPassword: '',
       newPassword: '',
@@ -296,29 +337,50 @@ export default function SettingsPage() {
                 <div className="password-form-section">
                   <div className="horizontal-form-group">
                     <label>Current password</label>
-                    <input
-                      type="password"
-                      value={passwordForm.currentPassword}
-                      onChange={(e) => handlePasswordChange('currentPassword', e.target.value)}
-                    />
+                    <div className="field-with-error">
+                      <div className={`input-error-wrap ${passwordErrors.currentPassword ? 'has-error' : ''}`}>
+                        <input
+                          type="password"
+                          value={passwordForm.currentPassword}
+                          onChange={(e) => handlePasswordChange('currentPassword', e.target.value)}
+                          className={passwordErrors.currentPassword ? 'input-error' : ''}
+                        />
+                        {passwordErrors.currentPassword && <span className="error-icon"><FiAlertCircle /></span>}
+                      </div>
+                      {passwordErrors.currentPassword && <div className="field-error-text">{passwordErrors.currentPassword}</div>}
+                    </div>
                   </div>
 
                   <div className="horizontal-form-group">
                     <label>New password</label>
-                    <input
-                      type="password"
-                      value={passwordForm.newPassword}
-                      onChange={(e) => handlePasswordChange('newPassword', e.target.value)}
-                    />
+                    <div className="field-with-error">
+                      <div className={`input-error-wrap ${passwordErrors.newPassword ? 'has-error' : ''}`}>
+                        <input
+                          type="password"
+                          value={passwordForm.newPassword}
+                          onChange={(e) => handlePasswordChange('newPassword', e.target.value)}
+                          className={passwordErrors.newPassword ? 'input-error' : ''}
+                        />
+                        {passwordErrors.newPassword && <span className="error-icon"><FiAlertCircle /></span>}
+                      </div>
+                      {passwordErrors.newPassword && <div className="field-error-text">{passwordErrors.newPassword}</div>}
+                    </div>
                   </div>
 
                   <div className="horizontal-form-group">
                     <label>Confirm new password</label>
-                    <input
-                      type="password"
-                      value={passwordForm.confirmPassword}
-                      onChange={(e) => handlePasswordChange('confirmPassword', e.target.value)}
-                    />
+                    <div className="field-with-error">
+                      <div className={`input-error-wrap ${passwordErrors.confirmPassword ? 'has-error' : ''}`}>
+                        <input
+                          type="password"
+                          value={passwordForm.confirmPassword}
+                          onChange={(e) => handlePasswordChange('confirmPassword', e.target.value)}
+                          className={passwordErrors.confirmPassword ? 'input-error' : ''}
+                        />
+                        {passwordErrors.confirmPassword && <span className="error-icon"><FiAlertCircle /></span>}
+                      </div>
+                      {passwordErrors.confirmPassword && <div className="field-error-text">{passwordErrors.confirmPassword}</div>}
+                    </div>
                   </div>
                 </div>
 
@@ -339,6 +401,14 @@ export default function SettingsPage() {
           </div>
         </main>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        pauseOnHover
+      />
     </div>
   );
 }

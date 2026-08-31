@@ -49,13 +49,13 @@ export default function JobsPage() {
             <div className="jobs-table-wrap">
               <table className="jobs-table">
                 <thead><tr><th><input type="checkbox" aria-label="Select all jobs" /></th><th>Position</th><th>Candidates</th><th>Date</th><th>Status</th><th>Recruiter</th><th>Published</th><th></th></tr></thead>
-                <tbody>{visibleJobs.map((job) => <tr key={job.id}>
+                <tbody>{visibleJobs.map((job) => <tr key={job.id} onClick={() => navigate(`/jobs/${job.id}`)} className="job-row-clickable">
                   <td><input type="checkbox" aria-label={`Select ${job.position}`} /></td>
                   <td>{job.position}</td><td>356</td><td>06/07/-07/08/2023</td>
                   <td><span className="job-status"><i style={{ backgroundColor: job.statusColor }} />{job.status}</span></td>
                   <td><div className="recruiter-cell"><img src={job.avatar} alt="" /><span>{job.recruiter}</span></div></td>
                   <td><div className="published-channels"><span>in</span><span>f</span><span>ln</span></div></td>
-                  <td><button type="button" className="job-menu-button" onClick={() => setMenuOpen(menuOpen === job.id ? null : job.id)} aria-label={`Actions for ${job.position}`}><FiMoreVertical /></button>{menuOpen === job.id && <div className="job-row-menu"><button type="button">Edit Job</button><button type="button">Archive Job</button><button type="button">Delete Job</button></div>}</td>
+                  <td><button type="button" className="job-menu-button" onClick={(event) => { event.stopPropagation(); setMenuOpen(menuOpen === job.id ? null : job.id); }} aria-label={`Actions for ${job.position}`}><FiMoreVertical /></button>{menuOpen === job.id && <div className="job-row-menu"><button type="button">Edit Job</button><button type="button">Archive Job</button><button type="button">Delete Job</button></div>}</td>
                 </tr>)}</tbody>
               </table>
             </div>

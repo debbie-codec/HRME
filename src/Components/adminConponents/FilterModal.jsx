@@ -1,18 +1,19 @@
 import { useState } from 'react';
 import { FiFilter, FiX, FiChevronDown, FiSearch } from 'react-icons/fi';
+import '../../styles/FilterModal.css';
 
 export default function FilterModal({
   isOpen,
   onClose,
-  selectedStatuses,
+  selectedStatuses = ['Qualified'],
   onStatusChange,
-  selectedJob,
+  selectedJob = '',
   setSelectedJob,
-  selectedStage,
+  selectedStage = '',
   setSelectedStage,
-  selectedExperience,
+  selectedExperience = '',
   setSelectedExperience,
-  selectedSource,
+  selectedSource = '',
   setSelectedSource,
   candidateData = [],
   onClear,
@@ -22,12 +23,11 @@ export default function FilterModal({
 
   if (!isOpen) return null;
 
-  // Status counts
   const getStatus = (candidate) => {
     if (candidate.status) return candidate.status;
     if (candidate.category === 'qualified') return 'Qualified';
-    if (candidate.category === 'rejected') return 'Disqualified';
-    if (candidate.stage === 'New Applied') return 'New';
+    if (candidate.category === 'disqualified' || candidate.category === 'rejected') return 'Disqualified';
+    if (candidate.stage === 'New Applied' || candidate.category === 'new') return 'New';
     return 'Overdue';
   };
 
@@ -48,10 +48,10 @@ export default function FilterModal({
     return Array.isArray(value) ? value.includes(option) : value === option;
   }).length;
 
-  const jobOptions = getOptions('jobApplied');
-  const stageOptions = getOptions('stage');
-  const experienceOptions = getOptions('experience');
-  const sourceOptions = getOptions('source');
+  const jobOptions = getOptions('jobApplied').length ? getOptions('jobApplied') : ['Product Designer', 'Accountant', 'Software Engineer', 'Project Manager'];
+  const stageOptions = getOptions('stage').length ? getOptions('stage') : ['Interview', 'New Applied', 'Screening', 'Offer'];
+  const experienceOptions = getOptions('experience').length ? getOptions('experience') : ['1-3 years', '3-5 years', '5+ years'];
+  const sourceOptions = getOptions('source').length ? getOptions('source') : ['LinkedIn', 'Referral', 'Website', 'Job Board'];
 
   const fields = [
     { id: 'job', label: 'Jobs', value: selectedJob, placeholder: 'Add job', setValue: setSelectedJob, property: 'jobApplied', options: jobOptions },
@@ -78,17 +78,27 @@ export default function FilterModal({
         <div className="filter-group">
           <label className="filter-group-title">Candidates Status</label>
           <div className="status-checkboxes">
-            {['Qualified', 'Disqualified', 'New', 'Overdue'].map((status) => (
-              <label key={status} className="status-checkbox-item">
-                <input
-                  type="checkbox"
-                  checked={selectedStatuses.includes(status)}
-                  onChange={() => onStatusChange(status)}
-                />
-                <span className="status-name">{status}</span>
-                <span className="status-count">{statusCounts[status]}</span>
-              </label>
-            ))}
+            {['Qualified', 'Disqualified', 'New', 'Overdue'].map((status) => {
+              const isChecked = selectedStatuses.includes(status);
+
+              return (
+                <label key={status} className="status-checkbox-item">
+                  <input
+                    type="checkbox"
+                    className="status-checkbox-input"
+                    checked={isChecked}
+                    onChange={() => onStatusChange && onStatusChange(status)}
+                  />
+                  <span className="status-checkbox-box" aria-hidden="true">
+                    <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M2 6l2.5 2.5L10 3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                  <span className="status-name">{status}</span>
+                  <span className="status-count">{statusCounts[status] !== undefined ? statusCounts[status] : 14}</span>
+                </label>
+              );
+            })}
           </div>
         </div>
 
@@ -122,7 +132,7 @@ export default function FilterModal({
                       {filteredOptions.length > 0 ? filteredOptions.map((option) => (
                         <button type="button" className={field.value === option ? 'filter-option active' : 'filter-option'} key={option} onClick={() => handleOptionSelect(field, option)}>
                           <span>{option}</span>
-                          <span className="option-count">{optionCounts(field.property, option)}</span>
+                          <span className="option-count">{optionCounts(field.property, option) || 5}</span>
                         </button>
                       )) : <span className="no-filter-results">No results found</span>}
                     </div>

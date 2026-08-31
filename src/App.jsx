@@ -8,6 +8,7 @@ import CandidateProfilePage from './Pages/CandidateProfilePage';
 import SettingsPage from './Pages/SettingsPage';
 import JobsPage from './Pages/JobsPage';
 import CreateVacancyPage from './Pages/CreateVacancyPage';
+import CalendarPage from './Pages/CalendarPage';
 import PrivateRoute from './Components/PrivateRoute';
 
 export default function App() {
@@ -56,6 +57,14 @@ export default function App() {
           }
         />
         <Route
+          path="/jobs/:jobId"
+          element={
+            <PrivateRoute>
+              <CreateVacancyPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
           path="/jobs/create"
           element={
             <PrivateRoute>
@@ -70,6 +79,15 @@ export default function App() {
           element={
             <PrivateRoute>
               <SettingsPage />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/calendar"
+          element={
+            <PrivateRoute>
+              <CalendarPage />
             </PrivateRoute>
           }
         />

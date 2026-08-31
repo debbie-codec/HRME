@@ -298,7 +298,7 @@ export default function CandidatesPage() {
       {/* MAIN CONTENT AREA */}
       <div className="main-wrapper">
         {/* TOP NAVBAR */}
-        <TopBar />
+        {!isFilterOpen && <TopBar />}
 
         {/* CANDIDATES PAGE CONTENT */}
         <main className="page-content">
