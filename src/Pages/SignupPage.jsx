@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import '../styles/landing.css';
+import '../styles/signup.css';
 export default function SignupPage() {
   const [formData, setFormData] = useState({
     Fullname: '',
@@ -54,7 +55,7 @@ export default function SignupPage() {
   };
 
   return (
-    <section className="page">
+    <section className="auth-page page">
       {/* FORM SECTION */}
       <div className="form-section">
         <div className="form-wrapper">

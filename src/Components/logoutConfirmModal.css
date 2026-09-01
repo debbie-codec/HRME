@@ -1,0 +1,103 @@
+/* Logout Confirm Modal */
+.logout-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 17, 17, 0.42);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 24px;
+}
+
+.logout-confirmation-modal {
+  width: min(100%, 380px);
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 18px;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+  padding: 38px 28px 30px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.logout-confirmation-title {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.25;
+  letter-spacing: -0.04em;
+  font-weight: 500;
+  color: #111827;
+  max-width: 300px;
+  margin-inline: auto;
+}
+
+.logout-confirmation-actions {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.logout-confirmation-cancel,
+.logout-confirmation-confirm {
+  min-width: 120px;
+  height: 42px;
+  border-radius: 14px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logout-confirmation-cancel {
+  background: transparent;
+  color: #111827;
+  border: 2px solid rgba(17, 24, 39, 0.8);
+}
+
+.logout-confirmation-confirm {
+  border: none;
+  color: #ffffff;
+  background: #023E87;
+  box-shadow:#023E87;
+}
+
+.logout-confirmation-cancel:hover,
+.logout-confirmation-confirm:hover {
+  transform: translateY(-1px);
+}
+
+.logout-confirmation-cancel:active,
+.logout-confirmation-confirm:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 640px) {
+  .logout-confirmation-modal {
+    padding: 28px 18px 22px;
+  }
+
+  .logout-confirmation-title {
+    font-size: 1.75rem;
+    max-width: 280px;
+  }
+
+  .logout-confirmation-actions {
+    gap: 14px;
+    margin-top: 22px;
+  }
+
+  .logout-confirmation-cancel,
+  .logout-confirmation-confirm {
+    width: 100%;
+    min-width: 0;
+    height: 56px;
+    font-size: 0.95rem;
+  }
+}
+

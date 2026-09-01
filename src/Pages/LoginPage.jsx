@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import '../styles/landing.css';
 import '../styles/login.css';
 
 export default function LoginPage() {
@@ -134,7 +135,7 @@ export default function LoginPage() {
   const isModalOpen = modalStep !== null;
 
   return (
-    <section className="page">
+    <section className="auth-page page">
       {/* FORM SECTION */}
       <div className="form-section">
         <div className="form-wrapper">

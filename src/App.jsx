@@ -9,6 +9,7 @@ import SettingsPage from './Pages/SettingsPage';
 import JobsPage from './Pages/JobsPage';
 import CreateVacancyPage from './Pages/CreateVacancyPage';
 import CalendarPage from './Pages/CalendarPage';
+import InboxPage from './Pages/InboxPage';
 import PrivateRoute from './Components/PrivateRoute';
 
 export default function App() {
@@ -88,6 +89,15 @@ export default function App() {
           element={
             <PrivateRoute>
               <CalendarPage />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/inbox"
+          element={
+            <PrivateRoute>
+              <InboxPage />
             </PrivateRoute>
           }
         />

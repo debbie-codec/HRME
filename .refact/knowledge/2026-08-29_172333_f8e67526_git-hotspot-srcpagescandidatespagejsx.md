@@ -6,7 +6,7 @@ tags:
 - git
 - hotspot
 created: 2026-08-29
-updated: 2026-08-30
+updated: 2026-08-31
 filenames:
 - src/Pages/CandidatesPage.jsx
 links: []
@@ -14,7 +14,7 @@ kind: code
 status: proposed
 superseded_by: null
 deprecated_at: null
-review_after: 2026-08-30
+review_after: 2026-08-31
 source_chat_id: null
 created_at: 2026-08-29T16:23:33.121253100+00:00
 summary: null

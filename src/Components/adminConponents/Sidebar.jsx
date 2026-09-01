@@ -11,17 +11,22 @@ import {
   FiMenu,
   FiX,
 } from 'react-icons/fi';
+import LogoutConfirmModal from '../LogoutConfirmModal';
 
 
 export default function Sidebar() {
   const navigate = useNavigate();
   const location = useLocation(); // Tracks current URL path
   const [isExpanded, setIsExpanded] = useState(false); // Mobile sidebar toggle
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
 
   // ================= LOGOUT FUNCTION =================
-  const handleLogout = () => {
-    sessionStorage.removeItem('hrme_currentUser');
-    navigate('/login');
+  const handleLogoutClick = () => {
+    setIsLogoutModalOpen(true);
+  };
+
+  const handleCloseLogoutModal = () => {
+    setIsLogoutModalOpen(false);
   };
 
   // ================= MENU ITEMS =================
@@ -111,7 +116,7 @@ export default function Sidebar() {
             <button className="upgrade-btn">Upgrade Now</button>
           </div>
 
-          <button className="logout-btn" onClick={handleLogout}>
+          <button className="logout-btn" onClick={handleLogoutClick}>
             <span className="nav-icon">
               <FiLogOut />
             </span>
@@ -124,6 +129,12 @@ export default function Sidebar() {
       <div 
         className={`sidebar-overlay ${!isExpanded ? 'hidden' : ''}`} 
         onClick={() => setIsExpanded(false)} 
+      />
+
+      {/* Logout Confirmation Modal */}
+      <LogoutConfirmModal 
+        isOpen={isLogoutModalOpen} 
+        onClose={handleCloseLogoutModal}
       />
     </>
   );

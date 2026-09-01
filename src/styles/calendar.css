@@ -1,22 +1,25 @@
 .calendar-page .main {
-  margin-left: 250px;
+  margin-left: var(--sidebar-width);
+  width: calc(100% - var(--sidebar-width));
   min-height: 100vh;
-  background: #f4f5f7;
+  background: transparent;
+  padding: 88px var(--dashboard-gutter) 32px;
+  box-sizing: border-box;
 }
 
 .calendar-shell {
-  width: min(100%, 980px);
-  max-width: 980px;
+  width: 100%;
+  max-width: var(--content-max-width);
   margin: 0 auto;
-  padding-top: 18px;
+  padding-top: 0;
 }
 
 .calendar-main-panel {
-  background: #ffffff;
-  border: 1px solid #dfe3ea;
-  border-radius: 10px 10px 0 0;
-  overflow: hidden;
-  box-shadow: 0 1px 0 rgba(17, 24, 39, 0.02);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: none;
   width: 100%;
 }
 
@@ -465,7 +468,9 @@
 .modal-header-content {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 12px;
+  width: 100%;
 }
 
 .modal-header-close {
@@ -481,7 +486,7 @@
   align-items: center;
   justify-content: center;
   padding: 0;
-  margin: 0;
+  margin-left: auto;
   border-radius: 50%;
   transition: background 0.2s ease, color 0.2s ease;
 }
@@ -497,6 +502,7 @@
   font-weight: 700;
   color: #1f2937;
   letter-spacing: -0.01em;
+  flex: 1;
 }
 
 .modal-body {

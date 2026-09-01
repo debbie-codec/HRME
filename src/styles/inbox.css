@@ -1,0 +1,54 @@
+.inbox-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 88px);
+}
+
+.inbox-coming-soon {
+  width: min(100%, 700px);
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 48px 28px;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
+}
+
+.inbox-illustration {
+  width: min(100%, 280px);
+  height: auto;
+  margin: 0 auto 18px;
+  display: block;
+}
+
+.inbox-coming-soon h1 {
+  margin: 0 0 8px;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.04em;
+}
+
+.inbox-coming-soon p {
+  margin: 0;
+  font-size: 1rem;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+.inbox-coming-soon button {
+  margin-top: 24px;
+  border: none;
+  background: #023e87;
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 12px 22px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.inbox-coming-soon button:hover {
+  background: #012d67;
+}

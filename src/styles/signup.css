@@ -1,0 +1,198 @@
+/* =====================================================
+   SIGNUP PAGE — additive styles only.
+   This file is loaded AFTER landing.css on signup page and
+   does not modify any existing rule in landing.css.
+===================================================== */
+
+.signup-subtext {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+.signup-btn-container {
+  position: relative;
+}
+
+.signup-login-note {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+/* ===== ERROR ALERT BANNER ===== */
+.signup-alert {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  background: #dc2626;
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 12px 14px;
+  font-size: 13px;
+  margin-bottom: 18px;
+}
+
+.signup-alert.show {
+  display: flex;
+}
+
+.signup-alert-icon {
+  font-size: 14px;
+}
+
+.signup-alert-text {
+  flex: 1;
+}
+
+.signup-alert-close {
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 600;
+}
+
+/* ===== BUTTON LOADING SPINNER ===== */
+.signup-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.signup-btn.is-loading {
+  background-color: #a9bcd6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.signup-btn.is-loading:hover {
+  color: white;
+  border: none;
+}
+
+.btn-spinner {
+  display: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+.signup-btn.is-loading .btn-spinner {
+  display: inline-block;
+}
+
+.signup-btn.is-loading .btn-text {
+  display: none;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== MODAL OVERLAY ===== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 17, 17, 0.55);
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.modal-overlay.show {
+  display: flex;
+}
+
+.modal-box {
+  display: none;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 32px 28px;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modal-box.show {
+  display: block;
+}
+
+/* =====================================================
+   RESPONSIVE MEDIA QUERIES - SIGNUP PAGE
+   ===================================================== */
+@media (max-width: 768px) {
+  .signup-subtext {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .signup-login-note {
+    margin-top: 12px;
+    font-size: 13px;
+  }
+
+  .signup-alert {
+    padding: 10px 12px;
+    font-size: 12px;
+    margin-bottom: 14px;
+  }
+
+  .btn-spinner {
+    width: 14px;
+    height: 14px;
+    border-width: 2px;
+  }
+
+  .modal-overlay {
+    padding: 16px;
+  }
+
+  .modal-box {
+    padding: 24px 20px;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .signup-subtext {
+    font-size: 12px;
+    margin-bottom: 16px;
+  }
+
+  .signup-login-note {
+    margin-top: 10px;
+    font-size: 12px;
+  }
+
+  .signup-alert {
+    padding: 8px 10px;
+    font-size: 11px;
+    margin-bottom: 12px;
+    gap: 8px;
+  }
+
+  .signup-alert-icon {
+    font-size: 12px;
+  }
+
+  .btn-spinner {
+    width: 12px;
+    height: 12px;
+  }
+
+  .modal-overlay {
+    padding: 12px;
+  }
+
+  .modal-box {
+    padding: 20px 16px;
+    border-radius: 8px;
+  }
+}
